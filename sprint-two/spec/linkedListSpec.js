@@ -51,5 +51,24 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should designate a new tail when new many nodes are added, tail.next should be null', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(6);
+    linkedList.addToTail(8);
+    linkedList.addToTail(10);
+    expect(linkedList.tail.value).to.equal(10);
+    expect(linkedList.tail.next).to.equal(null);
+  });
+
+  it('should designate a new tail when new many nodes are added/removed', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(6);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    linkedList.removeHead();
+    linkedList.addToTail(8);
+    expect(linkedList.head.value).to.equal(8);
+    expect(linkedList.head.next).to.equal(null);
+  });
   // add more tests here to test the functionality of linkedList
 });
