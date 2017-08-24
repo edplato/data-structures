@@ -14,8 +14,10 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     if(size - newFront > 0){
+      let dequeued = storage[newFront];
+      delete storage[newFront];
       newFront++;
-      return storage[newFront - 1];
+      return dequeued;
     }
   };
 
