@@ -27,6 +27,13 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    var result = false;
+    _.each(list, function(elem){
+      if (elem.value === target) {
+        result = true;
+      }
+    });
+    return result;
   };
 
   return list;
@@ -43,4 +50,9 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ addToTail: O(1)
+ removeHead: O(1)
+ contains: O(n)
+
  */

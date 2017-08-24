@@ -51,6 +51,12 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should not return true for a string value on contains', function() {
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    expect(linkedList.contains('7')).to.equal(false);
+  });
+
   it('should designate a new tail when new many nodes are added, tail.next should be null', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(6);
