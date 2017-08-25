@@ -31,17 +31,19 @@ Graph.prototype.contains = function(node) {
 
 // Remove node method that takes any node and removes it from the graph, if present. All edges connected to that Node are removed as well.
 Graph.prototype.removeNode = function(node) {
-  //test if graph contains node
-  // this.nodes = splice new nodes or newnodes
-
   for (var i = 0; i < this.nodes.length; i++) {
     if (this.nodes[i].node === node) {
       this.nodes.splice(i, 1);
-      return;
     }
   }
 
-  //todo remove edges
+  // iterate through edges
+  for (var j = 0; j < this.edges.length; j++) {
+    if (this.edges[j][0] === node || this.edges[j][1] === node) {
+      this.edges.splice(j, 1);
+    }
+  }
+  return;
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -99,5 +101,3 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
