@@ -17,14 +17,33 @@ describe('graph', function() {
 
   it('should store values as nodes that were inserted', function() {
     graph.addNode(1);
+    graph.addNode(2);
     expect(graph.contains(1)).to.equal(true);
+    expect(graph.contains(2)).to.equal(true);
+    expect(graph.contains(3)).to.equal(false);
+  });
+
+  it('should not add node if contains node', function() {
+    graph.addNode(9);
+    graph.addNode(9);
+    graph.addNode(5);
+    graph.removeNode(9);
+    expect(graph.contains(9)).to.equal(false);
   });
 
   it('should remove nodes that were inserted', function() {
     graph.addNode(2);
-    expect(graph.contains(2)).to.equal(true);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(5);
+    graph.addNode(5);
     graph.removeNode(2);
-    expect(graph.contains(2)).to.equal(false);
+    graph.removeNode(1);
+    graph.removeNode(5);
+    graph.addNode(21);
+    graph.addNode(21);
+    expect(graph.contains(5)).to.equal(false);
+    expect(graph.contains(21)).to.equal(true);
   });
 
   it('should create edges between two nodes', function() {
