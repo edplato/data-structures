@@ -1,7 +1,8 @@
 // Instantiate a new graph
 var Graph = function() {
   // creates object on prototype
-  this.storage = [];
+  this.nodes = [];
+  this.edges = [];
   // returns this
 };
 
@@ -10,30 +11,32 @@ Graph.prototype.addNode = function(node) {
   if (this.contains(node)) {
     return;
   }
-  var something = { node: node };
-  this.storage.push(something);
+  var newNode = { node: node };
+  this.nodes.push(newNode);
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  for (var i = 0; i < this.storage.length; i++) {
-    if (this.storage[i].node === node) {
-      return true;
+  //call forEachNode
+  var result = false;
+  this.forEachNode(function(elem){
+    if (elem === node) {
+      result = true;
     }
-  }
-  return false;
+  });
+  return result;
 };
 
-//Graph.prototype.index = function TO BE CONTINUED.....
+//Graph.prototype.index = function TO BE CONTINUED....
 
 // Remove node method that takes any node and removes it from the graph, if present. All edges connected to that Node are removed as well.
 Graph.prototype.removeNode = function(node) {
   //test if graph contains node
-  // this.storage = splice new storage or newStorage
+  // this.nodes = splice new nodes or newnodes
 
-  for (var i = 0; i < this.storage.length; i++) {
-    if (this.storage[i].node === node) {
-      this.storage.splice(i, 1);
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i].node === node) {
+      this.nodes.splice(i, 1);
       return;
     }
   }
@@ -46,15 +49,16 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   //node object property fromEdges.length > 0
   //
 
+
 };
 
 // Connects two nodes in a graph by adding an edge between them if they both are present within the graph.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  //toNode gets property fromEdges[]
-  //fromEdges is pushed fromNode
-
   //fromEdges gets property toEdges[]
   //toEdges is pushed toNode
+  if (this.contains(fromNode) && this.contains(toNode)) {
+    this.edges.push([fromNode, toNode]);
+  }
 
 };
 
@@ -66,7 +70,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback that traverses through the graph which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
-  //iterates through this.storage
+  _.each(this.nodes, function(item) {
+    cb(item.node);
+  });
 };
 
 
