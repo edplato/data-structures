@@ -19,7 +19,7 @@ Graph.prototype.addNode = function(node) {
 Graph.prototype.contains = function(node) {
   //call forEachNode
   var result = false;
-  this.forEachNode(function(elem){
+  this.forEachNode(function(elem) {
     if (elem === node) {
       result = true;
     }
@@ -46,10 +46,16 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  //node object property fromEdges.length > 0
-  //
-
-
+  var result = false;
+  _.each(this.edges, function(edgePair) {
+    let edge1 = edgePair[0];
+    let edge2 = edgePair[1];
+    if ((edge1 === fromNode && edge2 === toNode) ||
+     (edge1 === toNode && edge2 === fromNode)) {
+      result = true;
+    }
+  });
+  return result;
 };
 
 // Connects two nodes in a graph by adding an edge between them if they both are present within the graph.
