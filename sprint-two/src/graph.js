@@ -13,11 +13,28 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-
+  //should iterate through storage
+  for (var i = 0; i < this.storage.length; i++) {
+    if (this.storage[i].node === node){
+      return true;
+    }
+  }
+  return false;
+  //should ask if node property === node
 };
 
 // Remove node method that takes any node and removes it from the graph, if present. All edges connected to that Node are removed as well.
 Graph.prototype.removeNode = function(node) {
+  //test if graph contains node
+  // this.storage = splice new storage or newStorage
+
+  for (var i = 0; i < this.storage.length; i++) {
+    if (this.storage[i].node === node) {
+      this.storage.splice(i, 1);
+    }
+  }
+
+  //todo remove edges
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
