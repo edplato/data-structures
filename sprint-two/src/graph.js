@@ -1,18 +1,22 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
+  // creates object on prototype
+  this.storage = [];
+  // returns this
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  var something = { node: node };
+  this.storage.push(something);
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
+
 };
 
-// Removes a node from the graph.
+// Remove node method that takes any node and removes it from the graph, if present. All edges connected to that Node are removed as well.
 Graph.prototype.removeNode = function(node) {
 };
 
@@ -20,7 +24,7 @@ Graph.prototype.removeNode = function(node) {
 Graph.prototype.hasEdge = function(fromNode, toNode) {
 };
 
-// Connects two nodes in a graph by adding an edge between them.
+// Connects two nodes in a graph by adding an edge between them if they both are present within the graph.
 Graph.prototype.addEdge = function(fromNode, toNode) {
 };
 
@@ -28,9 +32,10 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 Graph.prototype.removeEdge = function(fromNode, toNode) {
 };
 
-// Pass in a callback which will be executed on each node of the graph.
+// Pass in a callback that traverses through the graph which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
 };
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
