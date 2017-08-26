@@ -26,7 +26,6 @@ BinarySearchTree.prototype.insert = function(value) {
 };
 // A .contains() method, which accepts a value and returns a boolean reflecting whether or not the value is contained in the tree.
 BinarySearchTree.prototype.contains = function(value) {
-  // console.log(this);
   if (this.value === value) {
     return true;
   }
@@ -41,7 +40,7 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 // A .depthFirstLog() method, which accepts a callback and executes it on every value contained in the tree.
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
-// if left is defined, current node equals left node
+// Uses pre-order traversal
   cb(this.value);
 
   if (this.left !== undefined) {
@@ -51,14 +50,12 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
   if (this.right !== undefined){
     //recurse this.right
     this.right.depthFirstLog(cb);
-
   }
-
-  // if (this.left === undefined && this.right === undefined) {
-  //   cb(this.value);
-  // }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  insert: O(log(n))
+  contains: O(log(n))
+  dfs: O(n)
  */
