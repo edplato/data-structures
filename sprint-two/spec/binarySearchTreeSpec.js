@@ -63,7 +63,7 @@ describe('binarySearchTree', function() {
     var func = function(value) { array.push(value * 2); };
     binarySearchTree.insert(2);
     binarySearchTree.depthFirstLog(func);
-    expect(array).to.eql([4]);
+    expect(array).to.eql([10, 4]);
   });
 
   it('should execute a callback on every value in a tree using "depthFirstLog"', function() {
