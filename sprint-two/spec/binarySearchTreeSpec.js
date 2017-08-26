@@ -22,7 +22,7 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
 
-  it('should insert a massive of values at the correct location in the tree', function() {
+  it('should insert a shitload of values at the correct location in the tree', function() {
     highValueBST.insert(2);
     highValueBST.insert(3);
     highValueBST.insert(7);
@@ -39,12 +39,31 @@ describe('binarySearchTree', function() {
     expect(highValueBST.left.right.right.right.value).to.equal(12);
   });
 
+
   it('should have a working "contains" method', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     expect(binarySearchTree.contains(7)).to.equal(true);
     expect(binarySearchTree.contains(8)).to.equal(false);
+  });
+
+  it('should have a working "contains" method on left branch', function() {
+    highValueBST.insert(7);
+    highValueBST.insert(6);
+    highValueBST.insert(4);
+    highValueBST.insert(8);
+    highValueBST.insert(12);
+    expect(highValueBST.contains(12)).to.equal(true);
+    expect(highValueBST.contains(18)).to.equal(false);
+  });
+
+  it('should call callback on small left BST', function() {
+    var array = [];
+    var func = function(value) { array.push(value * 2); };
+    binarySearchTree.insert(2);
+    binarySearchTree.depthFirstLog(func);
+    expect(array).to.eql([4]);
   });
 
   it('should execute a callback on every value in a tree using "depthFirstLog"', function() {
