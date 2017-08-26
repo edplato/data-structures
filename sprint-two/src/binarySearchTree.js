@@ -7,7 +7,7 @@ var BinarySearchTree = function(value) {
 // A .insert() method, which accepts a value and places in the tree in the correct position.
 BinarySearchTree.prototype.insert = function(value) {
   //if this > value
-  if (this.value > value) {//look to this.left
+  if (this.value > value) {
     if (this.left !== undefined) {
       this.left.insert(value);
     } else {
@@ -15,7 +15,7 @@ BinarySearchTree.prototype.insert = function(value) {
       this.left = newTree;
     }
   //if this < value
-  } else {//look to this.right
+  } else {
     if (this.right !== undefined) {
       this.right.insert(value);
     } else {
@@ -32,7 +32,7 @@ BinarySearchTree.prototype.contains = function(value) {
 
   if (this.value > value && this.left !== undefined) {
     return this.left.contains(value);
-  } else if(this.value < value && this.right !== undefined) {
+  } else if (this.value < value && this.right !== undefined) {
     return this.right.contains(value);
   } else {
     return false;
@@ -47,7 +47,7 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
     //recurse this.left
     this.left.depthFirstLog(cb);
   }
-  if (this.right !== undefined){
+  if (this.right !== undefined) {
     //recurse this.right
     this.right.depthFirstLog(cb);
   }
