@@ -6,8 +6,6 @@ var BinarySearchTree = function(value) {
 
 // A .insert() method, which accepts a value and places in the tree in the correct position.
 BinarySearchTree.prototype.insert = function(value) {
-  console.log(this);
-  //check if this > value
   //if this > value
   if (this.value > value) {//look to this.left
     if (this.left !== undefined) {
@@ -16,8 +14,8 @@ BinarySearchTree.prototype.insert = function(value) {
       var newTree = new BinarySearchTree(value);
       this.left = newTree;
     }
-    //if this.left is defined we need to call insert function on this.left with value still value
-  } else {
+  //if this < value
+  } else {//look to this.right
     if (this.right !== undefined) {
       this.right.insert(value);
     } else {
@@ -25,11 +23,20 @@ BinarySearchTree.prototype.insert = function(value) {
       this.right = newTree;
     }
   }
-  //if this < value look to this.right
 };
 // A .contains() method, which accepts a value and returns a boolean reflecting whether or not the value is contained in the tree.
-BinarySearchTree.prototype.contains = function(target) {
+BinarySearchTree.prototype.contains = function(value) {
+  if (this.value === value) {
+    return true;
+  }
 
+  if (this.value > value && this.left !== undefined) {
+    return this.left.contains(value);
+  } else if(this.value < value && this.right !== undefined) {
+    return this.right.contains(value);
+  } else {
+    return false;
+  }
 };
 // A .depthFirstLog() method, which accepts a callback and executes it on every value contained in the tree.
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
