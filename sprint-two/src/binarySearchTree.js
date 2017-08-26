@@ -7,7 +7,7 @@ var BinarySearchTree = function(value) {
 // A .insert() method, which accepts a value and places in the tree in the correct position.
 BinarySearchTree.prototype.insert = function(value) {
   //if this > value
-  if (this.value > value) {
+  if (this.value > value) {//look to this.left
     if (this.left !== undefined) {
       this.left.insert(value);
     } else {
@@ -15,7 +15,7 @@ BinarySearchTree.prototype.insert = function(value) {
       this.left = newTree;
     }
   //if this < value
-  } else {
+  } else {//look to this.right
     if (this.right !== undefined) {
       this.right.insert(value);
     } else {
@@ -33,7 +33,7 @@ BinarySearchTree.prototype.contains = function(value) {
 
   if (this.value > value && this.left !== undefined) {
     return this.left.contains(value);
-  } else if (this.value < value && this.right !== undefined) {
+  } else if(this.value < value && this.right !== undefined) {
     return this.right.contains(value);
   } else {
     return false;
@@ -41,29 +41,22 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 // A .depthFirstLog() method, which accepts a callback and executes it on every value contained in the tree.
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
-  // if left is defined, current node equals left node
+// if left is defined, current node equals left node
   cb(this.value);
 
   if (this.left !== undefined) {
-  //recurse this.left
+    //recurse this.left
     this.left.depthFirstLog(cb);
-    if (this.right !== undefined) {
-      //recurse this.right
-
-    }
-    if (this.left === undefined && this.right === undefined) {
-      cb(this.value);
-    }
-    console.log(this);
+  }
+  if (this.right !== undefined){
+    //recurse this.right
+    this.right.depthFirstLog(cb);
 
   }
 
-  // cb on current node
-
-
-
-
-
+  // if (this.left === undefined && this.right === undefined) {
+  //   cb(this.value);
+  // }
 };
 
 /*
