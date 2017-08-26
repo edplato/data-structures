@@ -7,9 +7,7 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  console.log(this);
   this.storage.push(item);
-  console.log(this.storage);
 };
 
 setPrototype.contains = function(item) {
@@ -22,8 +20,8 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
-  if (this.storage.contains(item)) {
-    for (var i = 0; i < this.storage.length; i++) {
+  for (var i = 0; i < this.storage.length; i++) {
+    if (this.storage[i] === item) {
       this.storage.splice(i, 1);
     }
   }

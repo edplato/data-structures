@@ -24,4 +24,27 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should add and remove values to a set and not detect false values', function() {
+    set.add('Danny Devito');
+    set.remove('Danny Devito');
+    set.add('Danny Glover');
+    expect(set.contains('Danny Glover')).to.equal(true);
+    expect(set.contains('Danny Devito')).to.equal(false);
+    expect(set.contains('Bob')).to.equal(false);
+  });
+
+  it('should add and remove lots of values from a set', function() {
+    set.add('Mel Gibson');
+    set.add('Zack');
+    set.add('Ed');
+    set.remove('Zack');
+    set.add('Birdo Dee');
+    set.add('Charlie');
+    set.remove('Mel Gibson');
+    console.log(set);
+    expect(set.contains('Zack')).to.equal(false);
+    expect(set.contains('Birdo Dee')).to.equal(true);
+    expect(set.contains('Mel Gibson')).to.equal(false);
+
+  });
 });
