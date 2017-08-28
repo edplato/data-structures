@@ -15,7 +15,9 @@ stackMethods.push = function(value) {
 stackMethods.pop = function() {
   if (this.top > 0) {
     this.top--;
-    return this.storage[this.top];
+    let popped = this.storage[this.top];
+    delete this.storage[this.top];
+    return popped;
   }
 };
 

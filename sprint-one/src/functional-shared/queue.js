@@ -1,7 +1,7 @@
 var Queue = function() {
   var someInstance = {};
-  someInstance.first = 0;
-  someInstance.last = 0;
+  someInstance.front = 0;
+  someInstance.back = 0;
   someInstance.storage = {};
   _.extend(someInstance, queueMethods);
 
@@ -10,20 +10,20 @@ var Queue = function() {
 
 var queueMethods = {};
 
-queueMethods.enqueue = function(value){
-  this.storage[this.first] = value;
-  this.first++;
-}
+queueMethods.enqueue = function(value) {
+  this.storage[this.back] = value;
+  this.back++;
+};
 
-queueMethods.dequeue = function(){
-  if(this.first - this.last > 0){
-    let dequeued = this.storage[this.last];
-    delete this.storage[this.last];
-    this.last++;
+queueMethods.dequeue = function() {
+  if (this.back - this.front > 0) {
+    let dequeued = this.storage[this.front];
+    delete this.storage[this.front];
+    this.front++;
     return dequeued;
   }
-}
+};
 
-queueMethods.size= function(){
-  return this.first - this.last;
-}
+queueMethods.size = function() {
+  return this.back - this.front;
+};

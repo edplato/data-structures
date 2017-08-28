@@ -9,18 +9,20 @@ var Stack = function() {
 
 var stackMethods = {};
 
-stackMethods.push = function(value){
+stackMethods.push = function(value) {
   this.storage[this.top] = value;
   this.top++;
-}
+};
 
-stackMethods.pop = function(){
-  if(this.top > 0){
+stackMethods.pop = function() {
+  if (this.top > 0) {
+    let popped = this.storage[this.top - 1];
+    delete this.storage[this.top - 1];
     this.top--;
-    return this.storage[this.top];
+    return popped;
   }
-}
+};
 
-stackMethods.size= function(){
+stackMethods.size = function() {
   return this.top;
-}
+};
